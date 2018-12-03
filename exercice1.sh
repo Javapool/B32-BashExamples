@@ -1,5 +1,14 @@
 #!/bin/bash
+# La ligne suivante permet de v√©rifier si un mot existe dans le dictionnaire
+read -p "veuillez entrer un mot : " motEntre
+# Il faut suffixer cet URL avec le mot entr√© par l'uasger (ex: word=chat)
 
-# La ligne suivante permet de vÈrifier si un mot existe dans le dictionnaire
-# Il faut suffixer cet URL avec le mot entrÈ par l'uasger (ex: word=chat)
-#wget -qO - http://dictionary.objectif8.com/exists.php?word=
+result=`wget -qO - http://dictionary.objectif8.com/exists.php?word=$motEntre`
+
+if test $result = "1"
+then
+	echo "Mot Trouv√©"
+else
+	echo "mot inexistant"
+fi
+
